@@ -1,0 +1,33 @@
+% Use scrartcl to allow larger base font size
+\documentclass[16pt]{scrartcl}
+\usepackage[left=3cm,right=3cm,top=6cm,bottom=5cm]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{wallpaper} % For background image frame
+
+\usepackage{datatool}
+% Load database 'names' from file 'marie-names.txt''
+\DTLloaddb{firstnames}{marie-names.txt}%Import the txt file in csv format as a database
+\begin{document}
+\linespread{2}\selectfont %Changing linespacing for the font and enabling the change
+\pagestyle{empty}% Turn of page numbers
+
+% For each record (line) in database 'names'
+% Assign field values by name to macros
+\DTLforeach{firstnames}{\name=FirstName}{
+  {\centering
+    {\LARGE\bfseries Bursdagsinvitasjon}\par
+   \smallskip\large Kjære \name\par\smallskip
+   Du er invitert til Gutt sin bursdag!\par
+    \medskip
+    Laurdag 19. januar frå 11:00 - 13:00 \par 
+    \medskip
+    Adresse\par     
+    \medskip
+  Svar på 40 44 84 31\par \bigskip 
+    \pagebreak}
+  }
+
+\end{document}
